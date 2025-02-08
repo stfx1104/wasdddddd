@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Anniversary!</title>
+    <link href="https://img5.pic.in.th/file/secure-sv1/cabd577b683fe4e1df5599fa2339dda40b77815d7cfa959e.gif" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: url('https://img5.pic.in.th/file/secure-sv1/cabd577b683fe4e1df5599fa2339dda40b77815d7cfa959e.gif') no-repeat center center/cover;
+            color: black; /* เปลี่ยนสีตัวอักษรเป็นสีดำ */
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: black; /* เปลี่ยนสีตัวอักษรของ h1 เป็นสีดำ */
+        }
+        p {
+            color: black; /* เปลี่ยนสีตัวอักษรของ p เป็นสีดำ */
+        }
+        .carousel {
+            width: 900px; /* เพิ่มความกว้างให้แสดง 3 รูป */
+            height: 300px;
+            overflow: hidden;
+            border-radius: 15px;
+            position: relative;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        .carousel-track {
+            display: flex;
+            width: 3000%; /* 10 รูป * 100% */
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel img {
+            width: 300px; /* ความกว้างของแต่ละรูป */
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+        .music-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            font-size: 0.9rem;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .music-button:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <button class="music-button" onclick="toggleMusic()">🎵 เปิด/ปิดเพลง</button>
+    <div class="container">
+        <h1>Happy Anniversary 0.3</h1>
+        <p>Happy Anniversary. Thank you for showing me what true love looks like!</p>
+        <div class="carousel">
+            <div class="carousel-track" id="carousel-track">
+                <img src="https://img5.pic.in.th/file/secure-sv1/8f3810fa-12a3-41e1-a4c6-2812cb478678-1.jpeg" alt="8f3810fa 12a3 41e1 a4c6 2812cb478678 (1)" border="0">
+                <img src="https://img2.pic.in.th/pic/2025-01-19_193127378346a871ffaab5.png" alt="2025 01 19 193127" border="0">
+                <img src="https://img5.pic.in.th/file/secure-sv1/image-1a3800371e531cc03.png" alt="image (1)" border="0">
+                <img src="https://img2.pic.in.th/pic/image-2b833f91c53f8d777.png" alt="image (2)" border="0">
+                <img src="https://img5.pic.in.th/file/secure-sv1/image-3221e4c6fba09a278.png" alt="image (3)" border="0">
+                <img src="https://img2.pic.in.th/pic/image461154e58ca69ea0.png" alt="image" border="0">
+                <img src="https://img5.pic.in.th/file/secure-sv1/IMG_4762338c6d6251760158.jpg" alt="IMG 4762" border="0">
+                <img src="https://img2.pic.in.th/pic/IMG_4849d9478391996f0145.jpeg" alt="IMG 4849" border="0">
+                <img src="https://img2.pic.in.th/pic/IMG_4849d9478391996f0145.jpeg" alt="IMG 4849" border="0">
+                <img src="https://img5.pic.in.th/file/secure-sv1/quality_restoration_25680203000738886b148548e2b2e9d26.jpg" alt="quality restoration 25680203000738886" border="0">
+                <img src="https://img2.pic.in.th/pic/quality_restoration_256802062156082348fe37b66ce6d6601.jpg" alt="quality restoration 25680206215608234" border="0">
+            </div>
+        </div>
+    </div>
+    <audio id="bg-music" autoplay loop>
+        <source src="https://cdn.discordapp.com/attachments/1285644827911782503/1337601871384416296/Violette_Wautier_-_This_Time___Mutual_Bar_Live_Session.mp3?ex=67a80a51&is=67a6b8d1&hm=805602da2615c02c2431411fea83f340ffd80747bf9a65bdb097a711c193c6a4&" type="audio/mpeg">
+    </audio>
+    <script>
+        var music = document.getElementById("bg-music");
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+            } else {
+                music.pause();
+            }
+        }
+        let currentIndex = 0;
+        function moveCarousel() {
+            const track = document.getElementById("carousel-track");
+            currentIndex = (currentIndex + 3) % 12; // เพิ่มทีละ 3 รูป
+            track.style.transform = `translateX(-${currentIndex * 300}px)`; // เคลื่อนไปทีละ 3 รูป
+        }
+        setInterval(moveCarousel, 3000); 
+    </script>
+</body>
+</html>
